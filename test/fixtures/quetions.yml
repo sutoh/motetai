@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  answer1: MyString
+  answer2: MyString
+  answer3: MyString
+  point1: 1
+  point2: 1
+  point3: 1
+
+two:
+  title: MyString
+  description: MyText
+  answer1: MyString
+  answer2: MyString
+  answer3: MyString
+  point1: 1
+  point2: 1
+  point3: 1

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @quetion.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @quetion.description %>
+</p>
+
+<p>
+  <b>Answer1:</b>
+  <%= @quetion.answer1 %>
+</p>
+
+<p>
+  <b>Answer2:</b>
+  <%= @quetion.answer2 %>
+</p>
+
+<p>
+  <b>Answer3:</b>
+  <%= @quetion.answer3 %>
+</p>
+
+<p>
+  <b>Point1:</b>
+  <%= @quetion.point1 %>
+</p>
+
+<p>
+  <b>Point2:</b>
+  <%= @quetion.point2 %>
+</p>
+
+<p>
+  <b>Point3:</b>
+  <%= @quetion.point3 %>
+</p>
+
+
+<%= link_to 'Edit', edit_quetion_path(@quetion) %> |
+<%= link_to 'Back', quetions_path %>
