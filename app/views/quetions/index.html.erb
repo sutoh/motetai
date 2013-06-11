@@ -1,36 +1,56 @@
 <h1>Listing quetions</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>Title</th>
-    <th>Description</th>
     <th>Answer1</th>
-    <th>Answer2</th>
-    <th>Answer3</th>
     <th>Point1</th>
-    <th>Point2</th>
-    <th>Point3</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
-
-<% @quetions.each do |quetion| %>
   <tr>
-    <td><%= quetion.title %></td>
-    <td><%= quetion.description %></td>
-    <td><%= quetion.answer1 %></td>
-    <td><%= quetion.answer2 %></td>
-    <td><%= quetion.answer3 %></td>
-    <td><%= quetion.point1 %></td>
-    <td><%= quetion.point2 %></td>
-    <td><%= quetion.point3 %></td>
-    <td><%= link_to 'Show', quetion %></td>
-    <td><%= link_to 'Edit', edit_quetion_path(quetion) %></td>
-    <td><%= link_to 'Destroy', quetion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <th colspan="2">Answer2</th>
+    <th>Point2</th>
   </tr>
-<% end %>
+  <tr>
+    <th colspan="2">Answer3</th>
+    <th>Point3</th>
+  </tr>
 </table>
+<% @quetions.each do |quetion| %>
+<table class="table table-bordered">
+  <tr>
+    <th>Title</th>
+    <td colspan="3"><%= quetion.title %></td>
+  </tr>
+  <% unless quetion.description.nil? %>
+  <tr>
+    <th>Description</th>
+    <td colspan="3"><%= quetion.description %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <th>答え1</th>
+    <td colspan="2"><%= quetion.answer1 %></td>
+    <td><%= quetion.point1 %></td>
+  </tr>
+  <tr>
+    <th>答え2</th>
+    <td colspan="2"><%= quetion.answer2 %></td>
+    <td><%= quetion.point2 %></td>
+  </tr>
+  <tr>
+    <th>答え3</th>
+    <td colspan="2"><%= quetion.answer3 %></td>
+    <td><%= quetion.point3 %></td>
+  </tr>
+  <tr class="info">
+    <td colspan="4">
+    <%= link_to 'Show', quetion, class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_quetion_path(quetion), class: 'btn btn-warning' %>
+    <%= link_to 'Destroy', quetion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </td>
+  </tr>
+</table>
+<% end %>
 
 <br />
 
