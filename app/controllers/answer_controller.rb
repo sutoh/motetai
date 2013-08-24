@@ -1,3 +1,4 @@
+#encoding: utf-8
 class AnswerController < ApplicationController
   @@limit = 15
   def hello
