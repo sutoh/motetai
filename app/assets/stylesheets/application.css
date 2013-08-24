@@ -9,5 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_directory ./bootstrap
  *= require_tree .
  */
+.aida {
+  padding-top: 40px;
+}
+.row {
+  margin-top: 40px;
+}
+body {
+  background: #f7f7f7 url('/assets/body-bg.jpg') repeat;
+}

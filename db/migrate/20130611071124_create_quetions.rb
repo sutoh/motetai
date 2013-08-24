@@ -9,6 +9,8 @@ class CreateQuetions < ActiveRecord::Migration
       t.integer :point1
       t.integer :point2
       t.integer :point3
+      t.string :category
+      t.string :note
 
       t.timestamps
     end

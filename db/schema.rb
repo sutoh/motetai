@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20130611071124) do
     t.integer  "point1"
     t.integer  "point2"
     t.integer  "point3"
+    t.string   "category"
+    t.string   "note"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -1,0 +1,69 @@
+<%#chart%>
+<div>モテ度ぐらっふぃ</div>
+<%= high_chart("ans_chart", @chart) %>
+
+<%#評価%>
+<div>総評</div>
+<% case @sum %>
+<% when 0 %>
+<pre>
+0：ちょっとふざけてみただけですよね？
+　　 普通に考えてこの点数はありえません。
+　　 もう一度だけ真剣に考えてみましょう。
+by 竹内
+</pre>
+<% when 1..7 %>
+<pre>
+1~7：わぉ、ありえないです。残念ながら完全に人生をなめているとしか思えません・・・。
+即刻生活態度を見直しましょう。このままでは孤独な人生を送ることになります！？
+by 吉田
+</pre>
+<% when 8..15 %>
+<pre>
+8~15：人生をなめていますね。このままではモテません！
+今からでもギリギリ間に合います。生活態度を見直してモテ人生を目指しましょう！
+by 吉田
+</pre>
+<% when 16..24 %>
+<pre>
+16~24：あなたは普通の人。モテたりモテなかったり…
+努力次第でモテモテ人生を歩めるかも！？
+by 小松
+</pre>
+<% when 25..29 %>
+<pre>
+25～29：あなたは既にモテモテのはず！
+もうちょっとで、モテ神になれる！目指せ神！
+by 小松
+</pre>
+<% when 30 %>
+<pre>
+30：あなたはモテ神です。
+　 なにをしてもモテてしまう完璧超人です。
+　 俗世を捨て、出家しましょう！
+by 竹内
+</pre>
+<% end %>
+<div>個別評価</div>
+<div class="max-col content ">
+  <ul id="kobetu" class="">
+  <% @ans_arr.each do |ans| %>
+  <li>
+    <div class="card">
+      <div class="face front">
+        <p><%= ans[:quetion] %></p>
+        <img src="/assets/<%=ans[:category]%>.jpg" title="" alt="" width="250" height="200" />
+      </div>
+      <div class="face back">
+        <h4><%= ans[:val_str] %></h4>
+        <p>Point: <%= ans[:point] %></p>
+        <p>観点: <%= ans[:note] %></p>
+    	</div>
+    </div>
+  </li>
+  <% end %>
+  </ul>
+</div>
+<br />
+
+<%= link_to '再診断( .ᴗ. )', "/hello" %>

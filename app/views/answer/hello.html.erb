@@ -1,0 +1,70 @@
+<% content_for :my_header do %>
+<header class="jumbotron subhead aida" id="overview">
+  <div class="container">
+    <h1>もてたい</h1>
+    <p class="lead">あなたのモテたいを診断.</p>
+  </div>
+</header>
+<% end %>
+
+<div class="span3 bs-docs-sidebar">
+  <ul class="nav nav-list bs-docs-sidenav">
+    <% @quetions.each_with_index do |quetion,i| %>
+    <li>
+      <a href="#<%=quetion.id %>">
+        <i class="icon-chevron-right"></i> 
+        <%=i+1%><%= title_slice(quetion.title) %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="span8 aida ">
+  <form method="post" action="/bye">
+  <% @quetions.each_with_index do |quetion,i| %>
+  <section id="<%=quetion.id%>">
+    <div class="page-header span7">
+      <h4>
+        <%=i+1%>.<%= quetion.title %><br>
+        <small><%=quetion.description%></small>
+      </h4>
+    </div>
+    <div class="" data-toggle="buttons-radio" id="answer_<%=quetion.id%>">
+      <table class="table table-bordered">
+        <tr>
+          <th class="answer_button">
+            <button type="button" class="btn btn-info" value="<%= quetion.point1 %>">答え1</button>
+          </th>
+          <td colspan="2" class="ansert_detail"><%= quetion.answer1 %></td>
+        </tr>
+        <tr>
+          <th class="answer_button">
+            <button type="button" class="btn btn-success" value="<%= quetion.point2 %>">答え2</button>
+          </th>
+          <td colspan="2" class="ansert_detail"><%= quetion.answer2 %></td>
+        </tr>
+        <% unless quetion.answer3.nil? %>
+        <tr>
+          <th class="answer_button">
+            <button type="button" class="btn btn-warning" value="<%= quetion.point3 %>">答え3</button>
+          </th>
+          <td colspan="2" class="ansert_detail"><%= quetion.answer3 %></td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="input_none">
+      <input type="text" name="id[]" value="<%=quetion.id%>">
+      <input type="text" name="val[]" value="">
+      <input type="text" name="point[]" value="">
+      </div>
+    </div>
+  </section>
+  <% end %>
+  <input type="submit" value="送信" />
+  </form>
+  <div>
+    <p>入力が終わりましたら、診断を始めましょう。</p>
+  </div>
+</div>
+
