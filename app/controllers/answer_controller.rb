@@ -21,16 +21,16 @@ class AnswerController < ApplicationController
       val_str = ans_val[i].empty? ? "" : eval("ans.answer#{ans_val[i]}")
       case ans.category
       when "会話"
-        kaiwa += ans_point[i]
-        @sum += ans_point[i]
+        kaiwa += ans_point[i].to_i
+        @sum += ans_point[i].to_i
         category = "kaiwa"
       when "行動"
-        koudou += ans_point[i]
-        @sum += ans_point[i]
+        koudou += ans_point[i].to_i
+        @sum += ans_point[i].to_i
         category = "koudou"
       when "文章"
-        bunsho += ans_point[i]
-        @sum += ans_point[i]
+        bunsho += ans_point[i].to_i
+        @sum += ans_point[i].to_i
         category = "bunsho"
       end
       @ans_arr << { 
