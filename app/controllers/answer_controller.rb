@@ -1,8 +1,32 @@
 #encoding: utf-8
 class AnswerController < ApplicationController
-  @@limit = 15
+  @@limit = 4
   def hello
-    @quetions = Quetion.order("RANDOM()").limit(@@limit)
+    # union できなかった
+    quetions = []
+    quetions << Quetion.where(category:"kaiwa").order("RANDOM()").limit(@@limit)
+    quetions << Quetion.where(category:"bunsho").order("RANDOM()").limit(@@limit)
+    quetions << Quetion.where(category:"koudou").order("RANDOM()").limit(@@limit)
+    
+    _que= quetions.inject([]) do |a, q|
+      q.each do |v|
+        h = {}
+        h[:id] = v.id
+        h[:title] = v.title
+        h[:description] = v.description
+        h[:answer1] = v.answer1
+        h[:answer2] = v.answer2
+        h[:answer3] = v.answer3
+        h[:point1] = v.point1
+        h[:point2] = v.point2
+        h[:point3] = v.point3
+        h[:category] = v.category
+        h[:note] = v.note
+        a << h
+      end
+      a
+    end
+    @quetions = _que.sort_by{rand}   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @quetions }
@@ -18,17 +42,17 @@ class AnswerController < ApplicationController
     catecory = ""
     ans_id.each_with_index do |v,i|
       ans = Quetion.find(ans_id[i])
-      val_str = ans_val[i].empty? ? "" : eval("ans.answer#{ans_val[i]}")
+      val_str = ans_val[i].empty? ? "no answer" : eval("ans.answer#{ans_val[i]}")
       case ans.category
-      when "会話"
+      when "kaiwa"
         kaiwa += ans_point[i].to_i
         @sum += ans_point[i].to_i
         category = "kaiwa"
-      when "行動"
+      when "koudou"
         koudou += ans_point[i].to_i
         @sum += ans_point[i].to_i
         category = "koudou"
-      when "文章"
+      when "bunsho"
         bunsho += ans_point[i].to_i
         @sum += ans_point[i].to_i
         category = "bunsho"

@@ -11,9 +11,9 @@
   <ul class="nav nav-list bs-docs-sidenav">
     <% @quetions.each_with_index do |quetion,i| %>
     <li>
-      <a href="#<%=quetion.id %>">
+      <a href="#<%=quetion[:id] %>">
         <i class="icon-chevron-right"></i> 
-        <%=i+1%><%= title_slice(quetion.title) %>
+        <%=i+1%><%= title_slice(quetion[:title]) %>
       </a>
     </li>
     <% end %>
@@ -23,38 +23,38 @@
 <div class="span8 aida ">
   <form method="post" action="/bye">
   <% @quetions.each_with_index do |quetion,i| %>
-  <section id="<%=quetion.id%>">
+  <section id="<%=quetion[:id]%>">
     <div class="page-header span7">
       <h4>
-        <%=i+1%>.<%= quetion.title %><br>
-        <small><%=quetion.description%></small>
+        <%=i+1%>.<%= quetion[:title] %><br>
+        <small><%=quetion[:description]%></small>
       </h4>
     </div>
-    <div class="" data-toggle="buttons-radio" id="answer_<%=quetion.id%>">
+    <div class="" data-toggle="buttons-radio" id="answer_<%=quetion[:id]%>">
       <table class="table table-bordered">
         <tr>
           <th class="answer_button">
-            <button type="button" class="btn btn-info" value="<%= quetion.point1 %>">答え1</button>
+            <button type="button" class="btn btn-info" value="<%= quetion[:point1] %>">答え1</button>
           </th>
-          <td colspan="2" class="ansert_detail"><%= quetion.answer1 %></td>
+          <td colspan="2" class="ansert_detail"><%= quetion[:answer1] %></td>
         </tr>
         <tr>
           <th class="answer_button">
-            <button type="button" class="btn btn-success" value="<%= quetion.point2 %>">答え2</button>
+            <button type="button" class="btn btn-success" value="<%= quetion[:point2] %>">答え2</button>
           </th>
-          <td colspan="2" class="ansert_detail"><%= quetion.answer2 %></td>
+          <td colspan="2" class="ansert_detail"><%= quetion[:answer2] %></td>
         </tr>
-        <% unless quetion.answer3.nil? %>
+        <% unless quetion[:answer3].nil? %>
         <tr>
           <th class="answer_button">
-            <button type="button" class="btn btn-warning" value="<%= quetion.point3 %>">答え3</button>
+            <button type="button" class="btn btn-warning" value="<%= quetion[:point3] %>">答え3</button>
           </th>
-          <td colspan="2" class="ansert_detail"><%= quetion.answer3 %></td>
+          <td colspan="2" class="ansert_detail"><%= quetion[:answer3] %></td>
         </tr>
         <% end %>
       </table>
       <div class="input_none">
-      <input type="text" name="id[]" value="<%=quetion.id%>">
+      <input type="text" name="id[]" value="<%=quetion[:id]%>">
       <input type="text" name="val[]" value="">
       <input type="text" name="point[]" value="">
       </div>

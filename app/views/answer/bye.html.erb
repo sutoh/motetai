@@ -55,8 +55,8 @@ by 竹内
         <img src="/assets/<%=ans[:category]%>.jpg" title="" alt="" width="250" height="200" />
       </div>
       <div class="face back">
-        <h4><%= ans[:val_str] %></h4>
-        <p>Point: <%= ans[:point] %></p>
+        <p>Your Answer</p>
+        <h6><%= ans[:val_str] %></h6>
         <p>観点: <%= ans[:note] %></p>
     	</div>
     </div>
@@ -65,5 +65,6 @@ by 竹内
   </ul>
 </div>
 <br />
-
-<%= link_to '再診断( .ᴗ. )', "/hello" %>
+<% content_for :footer do %>
+  <%= link_to '再診断( .ᴗ. )', "/hello" %>
+<% end %>
